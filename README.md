@@ -3,9 +3,9 @@
 Большой сборник TestJIG или TestFixtures в одном удобном месте
 
 # Как использовать
-Взять контрольную плату от S17Pro, зашить официальный образ sd картой и записать этот проект на sd.
-Веб интерфейс доступен по локальной сети, пароль root/root.
-Можно добавлять конфигурации паттернов в /config, инструмент tools в /testtool и паттерны в корень как требкет testJIG и при перезагрузке прошивка все подхватит и добавит в выпадающее меню
+- Взять контрольную плату от S17Pro, зашить официальный образ sd картой и записать этот проект на sd.
+- Веб интерфейс доступен по локальной сети, пароль root/root.
+- Можно добавлять конфигурации паттернов в /config, инструмент tools в /testtool и паттерны в корень как требкет testJIG и при перезагрузке прошивка все подхватит и добавит в выпадающее меню
 
 # Известные проблемы и нюансы
 - Если сменить через скрипт пароль у root. все ломается, sd недоступна по ssh
@@ -19,16 +19,16 @@
 # Еще
 Можно пересобрать образ из под linux и добавить в управление к примеру остановку всех процессов:
 - Extract image:
-dd if=uramdisk.image.gz bs=64 skip=1 of=ramdisk.image.gz
-gunzip ramdisk.image.gz 
-sudo mount -o loop ramdisk.image /mnt/tmp
+- dd if=uramdisk.image.gz bs=64 skip=1 of=ramdisk.image.gz
+- gunzip ramdisk.image.gz 
+- sudo mount -o loop ramdisk.image /mnt/tmp
 
 - Make modifications
 
 - Repack image:
-sudo umount /mnt/tmp
-gzip -v9 ramdisk.image
-mkimage -A arm -O linux -C gzip -a 0 -e 0 -T ramdisk -n LokisAsicTester -d ramdisk.image.gz uramdisk.image.gz
+- sudo umount /mnt/tmp
+- gzip -v9 ramdisk.image
+- mkimage -A arm -O linux -C gzip -a 0 -e 0 -T ramdisk -n LokisAsicTester -d ramdisk.image.gz uramdisk.image.gz
 
 # LokisAsicTester
 This is a compilation of all test binaries found in different Antminer Firmwares and Testfirmwares.
