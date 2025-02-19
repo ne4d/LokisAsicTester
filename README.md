@@ -14,6 +14,21 @@
 
 # Мною добавлено
 - Паттерны PT1, PT2 и tool S19J для теста плат BHB42701 на чипах BM1362
+
+# Еще
+Можно пересобрать образ из под linux и добавить в управление к примеру остановку всех процессов:
+- Extract image:
+dd if=uramdisk.image.gz bs=64 skip=1 of=ramdisk.image.gz
+gunzip ramdisk.image.gz 
+sudo mount -o loop ramdisk.image /mnt/tmp
+
+- Make modifications
+
+- Repack image:
+sudo umount /mnt/tmp
+gzip -v9 ramdisk.image
+mkimage -A arm -O linux -C gzip -a 0 -e 0 -T ramdisk -n LokisAsicTester -d ramdisk.image.gz uramdisk.image.gz
+
 # LokisAsicTester
 This is a compilation of all test binaries found in different Antminer Firmwares and Testfirmwares.
 
